@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { dummyResumeData } from "../assets/assets";
 import PersonalInfoForm from "../components/PersonalInfoForm";
+import ResumePreview from "../components/ResumePreview";
+import TemplateSelector from "../components/TemplateSelector";
 
 const ResumeBuilder = () => {
 
@@ -65,8 +67,8 @@ const ResumeBuilder = () => {
                 <hr className="absolute top-0 left-0 h-1 bg-gradient-to-r from-indigo-500 to-indigo-600 border-none transition-all duration-2000" style={{ width: `${(activeSectionIndex * 100) / (sections.length - 1)}%`}}/> 
                 {/*Section Navigation*/}
                 <div className="flex items-center justify-between mb-6 border-b border-gray-300 py-1">
-                  <div>
-
+                  <div className='flex justify-between items-center mb-6 border-b border-gray-300 py-1'>
+                     <TemplateSelector selectedTemplate={resumeData.template} onChange={(templateId)=> setResumeData(prev => ({...prev, template: templateId}))}/>
                   </div>
                   <div className='flex items-center'>
                      {activeSectionIndex !== 0 && (
@@ -93,7 +95,12 @@ const ResumeBuilder = () => {
              </div>  
           </div>
           {/* Right Panel - Preview*/}
-          <div></div>
+          <div className="lg:col-span-7 max-lg:mt-6">
+            <div>
+               {/*---buttons---*/}
+            </div>
+            <ResumePreview data ={resumeData} template={resumeData.template} accentColor={resumeData.accent_color} />
+          </div>
         </div>
       </div>
     </div>
