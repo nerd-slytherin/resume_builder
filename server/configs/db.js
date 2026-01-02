@@ -4,7 +4,7 @@ const connectDB = async()=>{
     try{
       mongoose.connection.on("connected", ()=>{console.log("Database Connected Successfully")})
       let mongodbURI = process.env.MONGODB_URI
-      const projectName = 'eunoia-create resume in minutes'
+      const projectName = 'eunoia_create_resume'
       if(!mongodbURI){
         throw new Error("MONGODB_URI environment variable not set")
       }
